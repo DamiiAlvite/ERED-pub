@@ -41,3 +41,6 @@ app-example
 # generated native folders
 /ios
 /android
+
+connections_map.json
+nodes_map.json
