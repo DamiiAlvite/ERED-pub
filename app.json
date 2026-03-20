@@ -3,6 +3,14 @@
     "name": "app-ered",
     "slug": "app-ered",
     "version": "1.0.0",
-    "scheme": "app-ered"
+    "scheme": "app-ered",
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMAPBOX_MAPS_DOWNLOAD_TOKEN": "process.env.EXPO_PRIVATE_MAPBOX_DOWNLOAD_TOKEN"
+        }
+      ]
+    ]
   }
 }
