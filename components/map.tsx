@@ -18,7 +18,7 @@ const connectionOpacityByZoom = [
   14, 0.6,
   15, 0.8,
   16, 1,
-] as any;
+] as const;
 
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_TOKEN ?? '');
