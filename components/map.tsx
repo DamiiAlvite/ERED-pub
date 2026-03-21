@@ -92,6 +92,7 @@ export default function NetworkMap() {
                 'match',
                 ['get', 'tipo'],
                 'CAMARA', '#0066ff',
+                'CAMARA_ESPECIAL', '#0066ff',
                 'PLATAFORMA', '#0066ff',
                 'CUCHILLA', '#28A745',
                 'ARRANQUE', '#28A745',
