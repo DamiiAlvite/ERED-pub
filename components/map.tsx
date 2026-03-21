@@ -126,7 +126,13 @@ export default function NetworkMap() {
                 '#00c954'
               ],
 
-              textSize: 80,
+              textSize: [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                13, 22,
+                16, 70,
+              ],
               textHaloColor: '#FFFFFF',
               textHaloWidth: 1,
               textAllowOverlap: true,
