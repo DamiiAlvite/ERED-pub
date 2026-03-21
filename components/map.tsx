@@ -8,6 +8,18 @@ import connectionMap from '../assets/data/connections_map.json';
 
 const nodesMapTyped = nodesMap as FeatureCollection<Geometry>;
 const connectionsMapTyped = connectionMap as FeatureCollection<Geometry>;
+const connectionOpacityByZoom = [
+  'interpolate',
+  ['linear'],
+  ['zoom'],
+  11, 0,
+  12, 0.15,
+  13, 0.35,
+  14, 0.6,
+  15, 0.8,
+  16, 1,
+] as any;
+
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_TOKEN ?? '');
 
@@ -28,9 +40,9 @@ export default function NetworkMap() {
             id="undergroundWire"
             filter={['==', ['get', 'instalacion'], 'SUBTERRANEA']}
             style={{
-              lineColor: '#001aff', 
+              lineColor: '#001aff',
               lineWidth: 3,
-              lineOpacity: 1,
+              lineOpacity: connectionOpacityByZoom,
             }}
           />
 
@@ -38,9 +50,9 @@ export default function NetworkMap() {
             id="aerialWire"
             filter={['==', ['get', 'instalacion'], 'AEREA']}
             style={{
-              lineColor: '#001aff', 
+              lineColor: '#001aff',
               lineWidth: 2,
-              lineOpacity: 0.8,
+              lineOpacity: connectionOpacityByZoom,
               lineDasharray: [3, 3],
             }}
           />
