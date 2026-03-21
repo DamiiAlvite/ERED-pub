@@ -67,23 +67,47 @@ export default function NetworkMap() {
                 ],
                 { 'font-scale': 1.0 },
 
-                '\n',
-                {},
-
                 [
                   'case',
-                  ['!=', ['coalesce', ['to-string', ['get', 'id']], ['to-string', ['get', 'ID']], ''], ''],
                   [
-                    'concat',
-                    ['coalesce', ['to-string', ['get', 'id']], ['to-string', ['get', 'ID']], ''],
+                    '!=',
                     [
                       'case',
-                      ['!=', ['coalesce', ['get', 'nombre'], ['get', 'name'], ''], ''],
-                      ['concat', '\n', ['coalesce', ['get', 'nombre'], ['get', 'name']]],
-                      ''
+                      ['!=', ['coalesce', ['to-string', ['get', 'id']], ['to-string', ['get', 'ID']], ''], ''],
+                      [
+                        'concat',
+                        ['coalesce', ['to-string', ['get', 'id']], ['to-string', ['get', 'ID']], ''],
+                        [
+                          'case',
+                          ['!=', ['coalesce', ['get', 'nombre'], ['get', 'name'], ''], ''],
+                          ['concat', '\n', ['coalesce', ['get', 'nombre'], ['get', 'name']]],
+                          ''
+                        ]
+                      ],
+                      ['coalesce', ['get', 'nombre'], ['get', 'name'], '']
+                    ],
+                    ''
+                  ],
+                  [
+                    'concat',
+                    '\n',
+                    [
+                      'case',
+                      ['!=', ['coalesce', ['to-string', ['get', 'id']], ['to-string', ['get', 'ID']], ''], ''],
+                      [
+                        'concat',
+                        ['coalesce', ['to-string', ['get', 'id']], ['to-string', ['get', 'ID']], ''],
+                        [
+                          'case',
+                          ['!=', ['coalesce', ['get', 'nombre'], ['get', 'name'], ''], ''],
+                          ['concat', '\n', ['coalesce', ['get', 'nombre'], ['get', 'name']]],
+                          ''
+                        ]
+                      ],
+                      ['coalesce', ['get', 'nombre'], ['get', 'name'], '']
                     ]
                   ],
-                  ['coalesce', ['get', 'nombre'], ['get', 'name'], '']
+                  ''
                 ],
                 { 'font-scale': 0.2 }
               ],
