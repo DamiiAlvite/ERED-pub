@@ -1,6 +1,7 @@
 
 import Mapbox from '@rnmapbox/maps';
 import { FeatureCollection, Geometry } from 'geojson';
+import { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import nodesMap from '../assets/data/nodes_map.json';
@@ -18,21 +19,32 @@ const connectionOpacityByZoom = [
   14, 0.6,
   15, 0.8,
   16, 1,
-] as const;
+] as any;
 
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_TOKEN ?? '');
 
-export default function NetworkMap() {
+type NetworkMapProps = {
+  selectedCoordinate?: [number, number] | null;
+};
+
+export default function NetworkMap({ selectedCoordinate }: NetworkMapProps) {
+  const cameraCenter = useMemo(
+    () => selectedCoordinate ?? [-58.2800, -34.7150],
+    [selectedCoordinate]
+  );
+
+  const zoomLevel = selectedCoordinate ? 16 : 13;
+
   return (
     <View style={styles.container}>
       <Mapbox.MapView style={styles.map}>
 
         <Mapbox.Camera
-          zoomLevel={13}
-          centerCoordinate={[-58.2800, -34.7150]}
+          zoomLevel={zoomLevel}
+          centerCoordinate={cameraCenter}
           animationMode="flyTo"
-          animationDuration={2000}
+          animationDuration={1200}
         />
 
         <Mapbox.ShapeSource id="connectionSource" shape={connectionsMapTyped}>
@@ -71,7 +83,7 @@ export default function NetworkMap() {
                   'CAMARA_ESPECIAL', '●',
                   'CUCHILLA', '◆',
                   'ARRANQUE', '◆',
-                  'BAJO_CARGA', '◆',
+                  'BAJO CARGA', '◆',
                   'PLATAFORMA', '▲',
                   'RECONECTADOR', '◆',
                   'SUBESTACION', '■',
@@ -132,7 +144,7 @@ export default function NetworkMap() {
                 'PLATAFORMA', '#0066ff',
                 'CUCHILLA', '#28A745',
                 'ARRANQUE', '#28A745',
-                'BAJO_CARGA', '#FFA500',
+                'BAJO CARGA', '#FFA500',
                 'RECONECTADOR', '#FFA500',
                 'SUBESTACION', '#343A40',
                 '#00c954'
