@@ -50,3 +50,16 @@ Extracción: Lectura de coordenadas y entidades desde archivos .dxf (AutoCAD).
 Ruteo Inteligente: Un algoritmo en Python (utilizando NetworkX y árboles KDTree) analiza las distancias y genera los vínculos lógicos, determinando divisiones de red y la dependencia de cada elemento a su alimentador principal.
 
 Conversión: Los datos se compilan en un formato JSON ultraligero que React Native consume de forma nativa para alimentar las capas (ShapeSource) de Mapbox.
+
+## Convenciones de ramas (Branch Naming)
+
+Para mantener un orden claro en el repositorio, seguimos estas convenciones para nombrar las ramas, usando guion bajo `_` (**snake_case**) para separar palabras dentro del nombre, y slash `/` para separar el prefijo del nombre de la rama:
+
+| Prefijo    | Uso principal                                            | Ejemplo                     |
+|------------|---------------------------------------------------------|-----------------------------|
+| `feature/` | Nuevas funcionalidades o mejoras                         | `feature/agregar_login`     |
+| `fix/`     | Corrección de errores o bugs                             | `fix/arreglar_error_login`  |
+| `infra/`   | Cambios en infraestructura y configuraciones técnicas   | `infra/configurar_dockerfile`|
+| `refactor/`| Cambios en código para mejorar estructura o legibilidad sin agregar ni arreglar funcionalidad | `refactor/limpieza_codigo`  |
+| `docs/`    | Cambios o mejoras en la documentación                    | `docs/actualizar_readme`    |
+| `migration/`| Cambio de tecnología, framework o esquema de BD | `migration/dotnet-to-django`|
